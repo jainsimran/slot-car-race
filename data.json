@@ -1,0 +1,64 @@
+{
+  "carsDescription": [
+    {
+      "name": "Mclaren Senna",
+      "workingStatus": true,
+      "minSpeed": 100,
+      "maxSpeed": 340,
+      "trackPosition": 0,
+      "chanceofBreakown": 0.1,
+      "driverName": "Dan Shiner",
+      "nitroBoosts": 3,
+      "chanceOfNitroBoostPerTurn": 0.6,
+      "raceWinner": false
+    },
+    {
+      "name": "Lamborghini",
+      "workingStatus": true,
+      "minSpeed": 110,
+      "maxSpeed": 355,
+      "trackPosition": 0,
+      "chanceofBreakown": 0.5,
+      "driverName": "Jamie J",
+      "nitroBoosts": 2,
+      "chanceOfNitroBoostPerTurn": 0.7,
+      "raceWinner": false
+    },
+    {
+      "name": "Playmouth Road Runner",
+      "workingStatus": true,
+      "minSpeed": 90,
+      "maxSpeed": 320,
+      "trackPosition": 0,
+      "chanceofBreakown": 0.15,
+      "driverName": "Jeff Rofe",
+      "nitroBoosts": 2,
+      "chanceOfNitroBoostPerTurn": 0.45,
+      "raceWinner": false
+    },
+    {
+      "name": "Aston Martin Vanquish",
+      "workingStatus": true,
+      "minSpeed": 100,
+      "maxSpeed": 325,
+      "trackPosition": 0,
+      "chanceofBreakown": 0.25,
+      "driverName": "Fil Stabany",
+      "nitroBoosts": 4,
+      "chanceOfNitroBoostPerTurn": 0.5,
+      "raceWinner": false
+    },
+    {
+      "name": "Ferrari",
+      "workingStatus": true,
+      "minSpeed": 85,
+      "maxSpeed": 350,
+      "trackPosition": 0,
+      "chanceofBreakown": 0.2,
+      "driverName": "Stuart S",
+      "nitroBoosts": 5,
+      "chanceOfNitroBoostPerTurn": 0.55,
+      "raceWinner": false
+    }
+  ]
+}

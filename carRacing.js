@@ -1,4 +1,16 @@
 function slotCarRace(len) {
+  this.fetchData= () => {
+    fetch('data.json')
+    .then(data => data.json())
+    .then( data => {
+      this.carsDescription = data.carsDescription;
+      this.checkIntervals();
+    })
+    .catch(error =>{
+      console.log("error");
+    });
+  }
+
   this.raceTrack = {
     lengthofTrack: len,
     weather: [
@@ -10,7 +22,7 @@ function slotCarRace(len) {
     winner: 0,
   };
 
-// function expression to find winner
+  // function expression to find winner
   this.winner = () => {
     clearInterval(this.timer);
     console.log(`Race is completed!`);
@@ -21,8 +33,11 @@ function slotCarRace(len) {
     if(winnerCar.trackPosition > this.raceTrack.lengthofTrack) console.log(`${winnerCar.name} has won the race!`);
   }
 
-// function expression to check intervals
+  // function expression to check intervals
   this.checkIntervals = () => {
+    // display random weather condition
+    let randomWeather = this.raceTrack.weather[Math.floor(Math.random()*this.raceTrack.weather.length)];
+    console.log(`Its current ${randomWeather.name} weather`);
     this.timer = setInterval(()=> {
       const workingCars = this.workingCars();
       const carsCompletedRace = workingCars.filter((car) => car.trackPosition > this.raceTrack.lengthofTrack);
@@ -32,21 +47,11 @@ function slotCarRace(len) {
     }, 3000);
   }
 
-
-// array of object with race car Description
-  this.carsDescription = [
-    {name: 'Mclaren Senna', workingStatus: true, minSpeed: 100, maxSpeed: 340, trackPosition: 0, chanceofBreakown: 0.1, driverName: 'Dan Shiner', nitroBoosts: 3, chanceOfNitroBoostPerTurn: 0.6, raceWinner: false},
-    {name: 'Lamborghini', workingStatus: true, minSpeed: 110, maxSpeed: 355, trackPosition: 0, chanceofBreakown: 0.5, driverName: 'Jamie S', nitroBoosts: 2, chanceOfNitroBoostPerTurn: 0.7, raceWinner: false},
-    {name: 'Playmouth Road Runner', workingStatus: true, minSpeed: 90, maxSpeed: 320, trackPosition: 0, chanceofBreakown: 0.15, driverName: 'Jeff Tang', nitroBoosts: 2, chanceOfNitroBoostPerTurn: 0.45, raceWinner: false},
-    {name: 'Aston Martin Vanquish', workingStatus: true, minSpeed: 100, maxSpeed: 325, trackPosition: 0, chanceofBreakown: 0.25, driverName: 'Fil Stabany', nitroBoosts: 4, chanceOfNitroBoostPerTurn: 0.5, raceWinner: false},
-    {name: 'Ferrari', workingStatus: true, minSpeed: 85, maxSpeed: 350, trackPosition: 0, chanceofBreakown: 0.2, driverName: 'Stuart', nitroBoosts: 5, chanceOfNitroBoostPerTurn: 0.55, raceWinner: false}
-  ];
-
-// function expression to update
+  // function expression to update
   this.update = (cars) => {
     cars.forEach((car) => {
       if(car.trackPosition <= this.raceTrack.lengthofTrack)
-        car.trackPosition += car.maxSpeed * 3;
+      car.trackPosition += car.maxSpeed * 3;
     });
     const workingCars = this.workingCars();
     this.trackPosition(workingCars);
@@ -58,7 +63,7 @@ function slotCarRace(len) {
 // function expression to start race
 slotCarRace.prototype.start = function() {
   console.log(`Get Set Go!!`);
-  this.checkIntervals();
+  this.fetchData();
 }
 
 // function expression to see working cars
@@ -99,3 +104,8 @@ slotCarRace.prototype.trackPosition =  function(cars) {
     if(car.trackPosition < this.raceTrack.lengthofTrack) console.log(`${car.name} left ${this.raceTrack.lengthofTrack - car.trackPosition} kms to complete the race!`);
   });
 }
+
+
+// to start car race
+let obj1 = new slotCarRace(10000);
+obj1.start();
